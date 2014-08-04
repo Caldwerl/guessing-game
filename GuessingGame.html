@@ -23,6 +23,9 @@
 
 			userGuess = prompt("Too low, try again.");
 			guesses++;
+		}else if(isNaN(userGuess)){
+
+			userGuess = prompt("That is not a number. Try again.");
 		}else{
 
 			userGuess = prompt("Too high, try again.");
