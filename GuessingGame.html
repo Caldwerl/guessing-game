@@ -1,0 +1,33 @@
+<script>
+
+	//bool flag for correct guess to end loop
+	var correct = false;
+
+	//variable to store the user's guess and initial user prompt
+	var userGuess = prompt("What number am I thinking of? Guess a number between 1 and 100.");
+		
+	//variable to store the computer's number	
+	var pcNumber = (Math.round(Math.random()*99 + 1));	
+
+	//variable to store the number of guesses made
+	var guesses = 0;
+
+	//while loop that checks user guesses against the computer's number and responds accordingly
+	while(!correct){
+
+		if(userGuess == pcNumber){
+
+			alert("You got it! And it only took " + guesses + " guess(es).");
+			correct = true;
+		}else if(userGuess < pcNumber){
+
+			userGuess = prompt("Too low, try again.");
+			guesses++;
+		}else{
+
+			userGuess = prompt("Too high, try again.");
+			guesses++;
+		}
+	}
+
+</script>
