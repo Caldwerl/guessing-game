@@ -1,37 +1,30 @@
 <script>
-
-	//bool flag for correct guess to end loop
-	var correct = false;
-
-	//variable to store the user's guess and initial user prompt
+	var isCorrect = false;
 	var userGuess = prompt("What number am I thinking of? Guess a number between 1 and 100.");
+	var pcNumber = (Math.round(Math.random()*99 + 1));
+	var numberOfGuesses = 1;
 
-	//variable to store the computer's number	
-	var pcNumber = (Math.round(Math.random()*99 + 1));	
-
-	//variable to store the number of guesses made
-	var guesses = 1;
-
-	//while loop that checks user guesses against the computer's number and responds accordingly
-	while(!correct){
-
+	//checks user guesses against the computer's number and responds accordingly
+	while(!isCorrect){
 		if(userGuess == pcNumber){
+			if (numberOfGuesses === 1) {
+				alert("You got it! The number is " + pcNumber + ". And it only took one guess.");
+			} else if (numberOfGuesses <= 7) {
+				alert("You got it! The number is " + pcNumber + ". And it only took " + numberOfGuesses + " guesses.");
+			} else {
+				alert("You're right! The number is " + pcNumber + ". And you finally got it after " + numberOfGuesses + " guesses.");
+			};
+			isCorrect = true;
 
-			alert("You got it! And it only took " + guesses + " guess(es).");
-			correct = true;
-		}else if(userGuess < pcNumber){
-
+		} else if (userGuess < pcNumber){
 			userGuess = prompt("Too low, try again.");
-			guesses++;
-		}else if(isNaN(userGuess)){
-
+			numberOfGuesses++;
+		} else if (isNaN(userGuess)){
 			userGuess = prompt("That is not a number. Try again.");
-			guesses++;
-		}else{
-
+			numberOfGuesses++;
+		} else {
 			userGuess = prompt("Too high, try again.");
-			guesses++;
-		}
-	}
-
+			numberOfGuesses++;
+		};
+	};
 </script>
